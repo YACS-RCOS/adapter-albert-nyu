@@ -6,15 +6,6 @@ from selenium.webdriver.support.wait import WebDriverWait
 from bs4 import BeautifulSoup
 import time
 import re
-#driver = webdriver.Firefox()
-#url = 'https://www.linkedin.com/jobs/search/?keywords=coach%20&location=United%20States&locationId=us%3A0'
-#driver.get(url)
-#soup = BeautifulSoup(driver.page_source, 'html.parser')
-
-#klass = 'jobs-search-results__count-string results-count-string Sans-15px-black-55% pb0 pl5 pr4'
-#text = soup.find('div',{'class':klass}).text.split('\n')[1].lstrip()
-#print(text)
-
 
 def parse():
   # Starting URL for Albert
@@ -32,13 +23,13 @@ def parse():
 
 def parseColleges(soup):
   # Get First College by id
-  print(soup.find('div', {'id': 'win0divNYU_CLS_GRP_VW_DESCR254GP$0'})
+  print(soup.find('div', {'id': 'win0divNYU_CLS_GRP_VW_DESCR254GP$0'}))
   # Get all colleges by id using regular expression
   colleges = soup.findAll('div', id=re.compile('^win0divNYU_CLS_GRP_VW_DESCR254GP\$\d+' ))
   print(colleges)
   # Print names of all colleges
   for college in colleges:
-	  print(college.text)
+    print(college.text)
 
 
 parse()
